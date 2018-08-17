@@ -123,3 +123,72 @@ def list_produto(request):
 
 def list_servico(request):
     return render(request, "grupo/gruposervico.html")
+
+###################################################################################################
+def list_registrar_pedido(request):
+    if request.method == 'POST':
+        
+        search = request.POST.get('nome_cliente')
+        lista_pedido = Pedido.objects.filter(nome_cliente_contains=search)
+
+        if search == "":
+            search = request.POST.get('nome_produto')
+            lista_pedido = Pedido.objects.filter(nome_produto_contains=search)
+
+            if search == "":
+                search = request.POST.get('nome_tecido')
+                lista_pedido = Pedido.objects.filter(nome_tecido_contains=search)
+
+                if search == "":
+                    search = request.POST.get('quantidade')
+                    lista_pedido= Pedido.objects.filter(quantidade__contains=search)
+                    
+                    if search == "":
+                        search = request.POST.get('tamanho')
+                        lista_pedido= Pedido.objects.filter(tamanho__contains=search)
+
+                        if search == "":
+                            search = request.POST.get('forma_pagamento')
+                            lista_pedido= Pedido.objects.filter(forma_pagamento__contains=search)
+
+                            if search == "":
+                                return render(request, "grupo/gruporegistrarpedido.html")
+
+        return render(request, "grupo/gruporegistrarpedido.html", {'lista_registrar_pedido':lista_registrar_pedido})
+    else:
+        return render(request, "grupo/gruporegistrarpedido.html")
+
+def list_gerenciar_pedido(request):
+    if request.method == 'POST':
+        
+        search = request.POST.get('id_gerenciarpedido')
+        lista_gerenciar_pedido = Gerenciar.objects.filter(id_gerenciarpedido_contains=search)
+
+        if search == "":
+            search = request.POST.get('status')
+            lista_gerenciar_pedido = Gerenciar.objects.filter(status_contains=search)
+
+            if search == "":
+                search = request.POST.get('data')
+                lista_pedido = Pedido.objects.filter(data_contains=search)
+
+                if search == "":
+                    search = request.POST.get('cliente')
+                    lista_pedido= Pedido.objects.filter(cliente__contains=search)
+                    
+                    if search == "":
+                        search = request.POST.get('pagamento')
+                        lista_pedido= Pedido.objects.filter(pagamento__contains=search)
+
+                        if search == "":
+                            search = request.POST.get('total')
+                            lista_pedido= Pedido.objects.filter(total__contains=search)
+
+                            if search == "":
+                                return render(request, "grupo/grupogerenciarpedido.html")
+
+        return render(request, "grupo/grupogerenciarpedido.html", {'lista_gerenciar_pedido':lista_gerenciar_pedido})
+    else:
+        return render(request, "grupo/grupogerenciarpedido.html")
+
+
