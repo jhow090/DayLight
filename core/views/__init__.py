@@ -37,3 +37,14 @@ from .cadastrar import create_servico
 from .listar import list_servico
 from .excluir import delete_servico
 from .atualizar import update_servico
+
+
+from .cadastrar import create_registrar_pedido
+from .listar import list_registrar_pedido
+from .excluir import delete_registrar_pedido
+from .atualizar import update_registrar_pedido
+
+from .cadastrar import create_gerenciar_pedido
+from .listar import list_gerenciar_pedido
+from .excluir import delete_gerenciar_pedido
+from .atualizar import update_gerenciar_pedido
