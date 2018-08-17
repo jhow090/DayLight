@@ -78,3 +78,26 @@ def update_servico(request, id):
         return redirect('list_servico')
 
     return render(request, 'cadastro/servico.html', { 'form' : form, 'update_servico':update_servico })
+
+################################################################################################################
+def update_registrar_pedido(request, id):
+    update_registrar_pedido = Pedido.objects.get(id=id)
+    form = PedidoForm(request.POST or None, instance=update_registrar_pedido)
+
+    if form.is_valid():
+        form.save()
+        return redirect('list_registrar_pedido')
+
+    return render(request, 'grupo/gruporegistrarpedido.html', { 'form' : form, 'update_registrar_pedido':update_registrar_pedido })
+
+def update_gerenciar_pedido(request, id):
+    update_gerenciar_pedido = Gedido.objects.get(id=id)
+    form = GerenciarForm(request.POST or None, instance=update_gerenciar_pedido)
+
+    if form.is_valid():
+        form.save()
+        return redirect('list_gerenciar_pedido')
+
+    return render(request, 'grupo/grupogerenciarpedido.html', { 'form' : form, 'update_gerenciar_pedido':update_gerenciar_pedido })
+
+
