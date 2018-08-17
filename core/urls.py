@@ -45,4 +45,7 @@ urlpatterns = [
     path('grupo/gruposervico/<id>/', views.delete_servico, name='delete_servico'),
     path('cadastro/servico/<id>/', views.update_servico, name='update_servico'),
 
+    ###########################################################
+    path('grupo/gruporegistrarpedido/', views.list_registrar_pedido, name='list_registrar_pedido'),
+    path('grupo/grupogerenciarpedido/', views.list_gerenciar_pedido, name='list_gerenciar_pedido'),
 ]
