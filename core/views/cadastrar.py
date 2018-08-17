@@ -89,3 +89,24 @@ def create_servico(request):
     else:
         form = ServicoForm()
     return render(request, 'cadastro/servico.html', { 'form' : form })
+
+#################################################################################
+def create_registrar_pedido(request):
+    if request.method == 'POST':
+        form = ServicoForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('list_registrar_pedido')
+    else:
+        form = ServicoForm()
+    return render(request, 'grupo/gruporegistrarpedido.html', { 'form' : form })
+
+def create_gerenciar_pedido(request):
+    if request.method == 'POST':
+        form = ServicoForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('list_gerenciar_pedido')
+    else:
+        form = ServicoForm()
+    return render(request, 'grupo/grupogerenciarpedido.html', { 'form' : form })
