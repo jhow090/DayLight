@@ -71,3 +71,23 @@ def delete_servico(request, id):
         return redirect('list_servico')
     
     return render(request, "exclusaoConf.html", {'delete_servico': delete_servico})
+
+##############################################################################################
+
+def delete_registrar_pedido(request, id):
+    delete_registrar_pedido = Pedido.objects.get(id=id)
+
+    if request.method == 'POST':
+        delete_registrar_pedido.delete()
+        return redirect('list_registrar_pedido')
+    
+    return render(request, "exclusaoConf.html", {'delete_registrar_pedido': delete_registrar_pedido})
+
+def delete_gerenciar_pedido(request, id):
+    delete_gerenciar_pedido = Gerenciar.objects.get(id=id)
+
+    if request.method == 'POST':
+        delete_gerenciar_pedido.delete()
+        return redirect('list_gerenciar_pedido')
+    
+    return render(request, "exclusaoConf.html", {'delete_gerenciar_pedido': delete_gerenciar_pedido})
