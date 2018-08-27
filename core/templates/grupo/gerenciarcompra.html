@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<!-- CABEÇALHO PAGINA -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/">
+            <i class="fa fa-home fa-lg"></i>
+        </a>
+    </li>
+    <li class="breadcrumb-item">Comercial</li>
+    <li class="breadcrumb-item active">Gerenciar Compra</li>
+</ol>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <h6 class="card-header">Filtrar Compra</h6>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method="POST" autofocus>
+                            {% csrf_token %}
+                            
+                  
+        
+            
+                            <div class="form-row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label class="small">Fornecedor</label>
+                                            <input class="form-control small" type="text" size="100" id="nome_cliente" name="nome_cliente">
+                                        </div>
+                                    </div>
+                                
+        
+        <div class="col-lg-2">
+            <div class="form-group">
+            <label for="servico-list" class="small">Data</label>
+                   <input class="form-control small" type="text" size="100" id="data_pedido" name="data_pedido">
+                </div>
+            
+        </form>
+    </form>                    
+</div>      
+</div>                      
+
+                            <div class="pull-right">
+                                <a href="{% url 'list_gerenciar_compra' %}">
+                                    <button type="submit" class="btn btn-secundary btn-md pull-right">Filtrar</button>
+                                    
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <table class="table table-hover text-center">
+                <thead class="card-header">
+                    <tr class="card-header">
+                        <th scope="col">Data</th>
+                        <th scope="col">Fornecedor</th>
+                        <th scope="col">Material</th>
+                        <th scope="col">Tipo de Material</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Total</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+
+                <tbody class="pull-midle">
+                    <tr>
+                        <td scope="row">18/06/2018</td>
+                        <td>001 - JetFio Tecidos</td>
+                        <td>Tecido</td>
+                        <td>Algodão</td>
+                        <td>60 Metros</td>
+                        <td>R$ 270,00</td>
+                        <td>
+                            <button class="btn btn-primary btn-xs">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-default btn-xs"><a href=javascript:print();>
+                                    <i class="fa fa-print"></i></a>
+                                </button>
+                            <button class="btn btn-danger btn-xs">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                        
+                        </td>
+                    </tr>
+                    <tr>
+                            <td scope="row">19/06/2018</td>
+                            <td>003 - Santa Cecília</td>
+                            <td>Gola</td>
+                            <td>Polo</td>
+                            <td>20</td>
+                            <td>R$ 30,00</td>
+                            <td>
+
+                                <button class="btn btn-primary btn-xs">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                                <button class="btn btn-secundary btn-xs"><a href=javascript:print();>
+                                        <i class="fa fa-print"></i></a>
+                                    </button>
+                               
+                                <button class="btn btn-danger btn-xs">
+                                        <i class="fa fa-trash"></i>
+                                </button>
+                            
+                            </td>
+                        </tr>
+                        </tr>
+            </table>
+            
+                {% for cliente in lista_cliente %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ cliente.clientename }}</th>
+                        <td>{{ pedido.produto }}</td>
+                        <td>{{ pedido.tecido }}</td>
+                        <td>{{ pedido.quantidade }}</td>
+                        <td>{{ pedido.tamanho }}</td>
+                        <td>{{ pedido.forma_pagamento }}</td>
+
+                        {% if cliente %}
+                        <td><a href="{% url 'update_cliente' cliente.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_cliente' cliente.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                        </td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="card-body">
+            <a href="{% url 'list_ordem_compra' %}"><button type="submit" class="btn btn-primary btn-md pull-right">Novo</button></a>
+        </div>
+    </div>
+</div>
+<br />
+{% endblock %}
+
+

@@ -11,7 +11,7 @@ def create_usuario(request):
         return redirect('list_usuario')
     else:
         form = UsuarioForm()
-    return render(request, 'gerencial/cadastrarusuario.html', { 'form' : form })
+    return render(request, 'cadastro/usuario.html', { 'form' : form })
 
 
 def create_cliente(request):
@@ -22,7 +22,7 @@ def create_cliente(request):
         return redirect('list_cliente')
     else:
         form = ClienteForm()
-    return render(request, 'comercial/cadastrarcliente.html', { 'form' : form })
+    return render(request, 'cadastro/cliente.html', { 'form' : form })
 
 
 def create_fornecedor(request):
@@ -33,7 +33,7 @@ def create_fornecedor(request):
         return redirect('list_fornecedor')
     else:
         form = FornecedorForm()
-    return render(request, 'comercial/cadastrarfornecedor.html', { 'form' : form })
+    return render(request, 'cadastro/fornecedor.html', { 'form' : form })
 
 
 def create_prestador(request):
@@ -44,22 +44,18 @@ def create_prestador(request):
         return redirect('list_prestador')
     else:
         form = PrestadorForm()
-    return render(request, 'producao/cadastrarprestador.html', { 'form' : form })
+    return render(request, 'cadastro/prestador.html', { 'form' : form })
 
 
 def create_material(request):
     if request.method == 'POST':
         form = MaterialForm(request.POST)
-        tipo_mprima = request.POST.get('tipo_mprima')
         if form.is_valid():
             form.save()
-            if tipo_mprima == 'Tecido' or tipo_mprima == 'tecido':
-                return redirect('create_medida')
-            else:
-                return redirect('list_material')
+        return redirect('list_material')
     else:
         form = MaterialForm()
-    return render(request, 'comercial/cadastrarmaterial.html', { 'form' : form })
+    return render(request, 'cadastro/material.html', { 'form' : form })
 
 
 def create_medida(request):
@@ -70,7 +66,7 @@ def create_medida(request):
         return redirect('list_medida')
     else:
         form = UnidadeMedidaForm()
-    return render(request, 'comercial/cadastrarmedida.html', { 'form' : form })
+    return render(request, 'cadastro/unidademedida.html', { 'form' : form })
 
 
 def create_produto(request):
@@ -81,7 +77,7 @@ def create_produto(request):
         return redirect('list_produto')
     else:
         form = ProdutoForm()
-    return render(request, 'comercial/cadastrarproduto.html', { 'form' : form })
+    return render(request, 'cadastro/produto.html', { 'form' : form })
 
 
 def create_servico(request):
@@ -92,4 +88,48 @@ def create_servico(request):
         return redirect('list_servico')
     else:
         form = ServicoForm()
-    return render(request, 'producao/cadastrarservico.html', { 'form' : form })
+    return render(request, 'cadastro/servico.html', { 'form' : form })
+
+#################################################################################
+def create_registrar_pedido(request):
+    if request.method == 'POST':
+        form = ServicoForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('list_registrar_pedido')
+    else:
+        form = ServicoForm()
+    return render(request, 'grupo/gruporegistrarpedido.html', { 'form' : form })
+
+def create_gerenciar_pedido(request):
+    if request.method == 'POST':
+        form = ServicoForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('list_gerenciar_pedido')
+    else:
+        form = ServicoForm()
+    return render(request, 'grupo/grupogerenciarpedido.html', { 'form' : form })
+
+################################################################################
+def create_ordem_compra(request):
+    if request.method == 'POST':
+        form = CompraForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('list_ordem_compra')
+    else:
+        form = CompraForm()
+
+    return render(request, 'grupo/ordemcompra.html', { 'form' : form })
+
+
+def create_gerenciar_compra(request):
+    if request.method == 'POST':
+        form = CompraForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('list_gerenciar_compra')
+    else:
+        form = CompraForm()
+    return render(request, 'grupo/gerenciarcompra.html', { 'form' : form })

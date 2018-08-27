@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+<!-- CABEÇALHO PAGINA -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/">
+            <i class="fa fa-home fa-lg"></i>
+        </a>
+    </li>
+    <li class="breadcrumb-item">Comercial</li>
+    <li class="breadcrumb-item active">Ordem de Compra</li>
+</ol>
+
+<div class="row">
+    <d1iv class="col-sm-12">
+        <div class="card">
+            <h6 class="card-header">Ordem de Compra</h6>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method="POST" autofocus>
+                            {% csrf_token %}
+                            
+                            <div class="form-row">
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <label class="small">Data</label>
+                                        <input class="form-control small" type="text" size="8" id="data" name="data">
+                                    </div>
+                                </div>
+                            </div> 
+                    </div>
+
+                    <div class="col-lg-4">
+                            <div class="form-group">
+                            <label for="servico-list" class="small">Fornecedor</label>
+                                    <select id="servico-list" class="form-control">
+                                        <option>--Selecione--</option>
+                                        <option>001 - JetFio Tecidos</option>
+                                        <option>002 - C&R Linhas </option>
+                                        <option>003 - Santa Cecília</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                    <div class="col-lg-2">
+                         <div class="form-group">
+                        <label for="servico-list" class="small">Material</label>
+                                <select id="servico-list" class="form-control">
+                                    <option>--Selecione--</option>
+                                    <option>Linha</option>
+                                    <option>Tecido</option>
+                                    <option>Zíper</option>
+                                    <option>Gola</option>
+                                    <option>Punho</option>
+                                    <option>Botão</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    <div class="col-lg-2">
+                             <div class="form-group">
+                            <label for="servico-list" class="small">Tipo de Produto</label>
+                                    <select id="servico-list" class="form-control">
+                                        <option>--Selecione--</option>
+                                        <option>Linha de Calça</option>
+                                        <option>Algodão</option>
+                                        <option>Zíper Pequeno</option>
+                                        <option>Gola Polo</option>
+                                        <option>Punho Duplo</option>
+                                        <option>Botão de Ferro</option>
+                                    </select>
+                            </div>
+                    </div>
+
+                <div class="col-lg-2">
+                    
+                    <label for="servico-list" class="small" >Quantidade</label>
+                    <input class="form-control small relative" type="text" size="100" id="nome_cliente" name="nome_cliente" style="width:154px;">
+                    </div>                                       
+
+                    <div class="col-lg-6">
+                    
+                    <label for="servico-list" class="small" >Observação</label>
+                    <textarea class="form-control small relative" name="observacao" size="200" style=":width 400px;" ></textarea>
+            <!--    <input class="form-control small relative" type="textarea" size="100" id="nome_cliente" name="nome_cliente" style="width:400px;">   -->
+                    </div>
+
+                       
+
+                </div>
+            </div>
+
+                <div class="pull-right">
+                                <a href="{% url 'list_cliente' %}">
+                                    <button type="submit" class="btn btn-success btn-md pull-right">Adicionar</button>
+                                </a>
+                </div>
+                    </form>
+
+        </div>
+
+            
+
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <table class="table table-hover text-center">
+                <thead class="card-header">
+                    <tr class="card-header">
+                        <th scope="col">Data</th>
+                        <th scope="col">Fornecedor</th>
+                        <th scope="col">Material</th>
+                        <th scope="col">Tipo de Material</th>
+                        <th scope="col">Quant.</th>
+                        <th scope="col">Observação</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">18/06/2018</th>
+                        <td>001 - JetFio Tecidos</td>
+                        <td>Tecido</td>
+                        <td>Algodão</td>
+                        <td>60 Metros</td>
+                        <td>Preto com listras brancas</td>
+                        <td>
+                            <button class="btn btn-primary btn-xs">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+
+                             <button class="btn btn-secundary btn-xs"><a href=javascript:print();>
+                                        <i class="fa fa-print"></i></a>
+                            </button>
+                            
+                            <button class="btn btn-danger btn-xs">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                        
+                        </td>
+                    </tr>
+                    <tr>
+                            <th scope="row">19/06/2018</th>
+                            <td>003 - Santa Cecília</td>
+                            <td>Gola</td>
+                            <td>Polo</td>
+                            <td>20</td>
+                            <td>Branca com a uma listra na ponta preta</td>
+                            <td>
+                                <button class="btn btn-primary btn-xs">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-secundary btn-xs"><a href=javascript:print();>
+                                        <i class="fa fa-print"></i></a>
+                                </button>
+
+                                <button class="btn btn-danger btn-xs">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            
+                            </td>
+                        </tr>
+            </table>
+            
+                {% for cliente in lista_cliente %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ cliente.clientename }}</th>
+                        <td>{{ pedido.produto }}</td>
+                        <td>{{ pedido.tecido }}</td>
+                        <td>{{ pedido.quantidade }}</td>
+                        <td>{{ pedido.tamanho }}</td>
+                        <td>{{ pedido.forma_pagamento }}</td>
+
+                        {% if cliente %}
+                        <td><a href="{% url 'update_cliente' cliente.id %}"><button class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button></a>
+                            <a href="{% url 'delete_cliente' cliente.id %}"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>
+                        </td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="card-body">
+            <a href="/cadastro/cliente"><button type="submit" class="btn btn-success btn-md pull-right">Salvar</button></a>
+        </div>
+    </div>
+</div>
+<br />
+{% endblock %}
